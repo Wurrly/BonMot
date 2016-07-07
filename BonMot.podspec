@@ -1,14 +1,14 @@
 Pod::Spec.new do |s|
-  s.name             = "BonMot"
-  s.version          = "3.1.1"
+  s.name             = "BonMot-Wurrly"
+  s.version          = "5.0.0"
   s.summary          = "An Objective-C attributed string generation library."
   s.description      = <<-DESC
   BonMot removes all the mystery from creating beautiful, powerful attributed strings on iOS.
                        DESC
-  s.homepage         = "https://github.com/Raizlabs/BonMot"
+  s.homepage         = "https://github.com/Wurrly/BonMot.git"
   s.license          = 'MIT'
   s.author           = { "Zev Eisenberg" => "zev.eisenberg@raizlabs.com" }
-  s.source           = { :git => "https://github.com/Raizlabs/BonMot.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/Wurrly/BonMot.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/ZevEisenberg'
 
   s.platform     = :ios, '8.0'
