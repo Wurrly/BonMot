@@ -6,7 +6,7 @@
 //  Copyright © 2015 Zev Eisenberg. All rights reserved.
 //
 
-@import XCTest;
+#import <XCTest/XCTest.h>
 #import "NSDictionary+BONEquality.h"
 #import "DummyAssetClass.h"
 #import "BONCompatibility.h"

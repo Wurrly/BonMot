@@ -8,7 +8,7 @@
 
 #import "BONBaseTestCase.h"
 
-@import CoreText.CTFontManager;
+#import <CoreText/CoreText.h>
 
 NSValue *BONValueFromRange(NSUInteger location, NSUInteger length)
 {

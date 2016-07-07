@@ -6,9 +6,11 @@
 //  Copyright © 2015 Zev Eisenberg. All rights reserved.
 //
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 
-@import BonMot;
+#import <BonMot/BonMot.h>
+
+#import <BonMot/BonMot+UIKit.h>
 
 @interface AbstractCell : UITableViewCell
 

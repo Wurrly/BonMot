@@ -6,7 +6,10 @@
 //
 //
 
-@import UIKit;
+
+ 
+#import <UIKit/UIKit.h>
+
 
 #import "BONTextable.h"
 #import "BONCompatibility.h"

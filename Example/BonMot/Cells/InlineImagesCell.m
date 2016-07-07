@@ -7,6 +7,7 @@
 //
 
 #import "InlineImagesCell.h"
+#import <BonMot/BonMot+UIKit.h>
 
 @interface InlineImagesCell ()
 

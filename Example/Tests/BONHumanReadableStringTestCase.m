@@ -15,7 +15,7 @@ static const double kBONTwoThirds = 2.0 / 3.0;
 OBJC_EXTERN NSString *BONDoubleRoundedString(double theDouble);
 OBJC_EXTERN NSString *BONPrettyStringFromCGSize(CGSize size);
 
-@import BonMot;
+#import <BonMot/BonMot.h>
 
 @interface BONHumanReadableStringTestCase : BONBaseTestCase
 

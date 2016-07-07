@@ -7,7 +7,8 @@
 //
 
 #import "BonMot.h"
-@import ObjectiveC.runtime;
+#import <objc/runtime.h>
+#import "UILabel+BonMotUtilities.h"
 
 @implementation UILabel (BonMotUtilities)
 

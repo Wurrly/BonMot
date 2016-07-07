@@ -6,7 +6,10 @@
 //
 //
 
-@import Foundation;
+
+
+#import <Foundation/Foundation.h>
+
 
 #import "BONText.h"
 #import "BONCompatibility.h"

@@ -6,7 +6,7 @@
 //  Copyright © 2015 Zev Eisenberg. All rights reserved.
 //
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 
 IB_DESIGNABLE
 @interface DashedHairlineView : UIView

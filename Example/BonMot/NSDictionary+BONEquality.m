@@ -8,7 +8,7 @@
 
 #import "NSDictionary+BONEquality.h"
 
-@import CoreGraphics.CGBase;
+#import <CoreGraphics/CoreGraphics.h>
 
 const double kBONDoubleEpsilon = 0.0001;
 

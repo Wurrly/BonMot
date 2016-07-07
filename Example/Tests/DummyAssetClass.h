@@ -6,7 +6,7 @@
 //  Copyright © 2015 Zev Eisenberg. All rights reserved.
 //
 
-@import Foundation;
+#import <Foundation/Foundation.h>
 
 /**
  *  Dummy class used to find the correct bundle in the test target in order to load images from the asset catalog.

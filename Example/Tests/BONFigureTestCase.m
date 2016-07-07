@@ -8,10 +8,10 @@
 
 #import "BONBaseTestCase.h"
 
-@import CoreText.CTFontManager;
-@import CoreText.SFNTLayoutTypes;
+#import <CoreText/CoreText.h>
 
-@import BonMot;
+
+#import <BonMot/BonMot.h>
 
 static const CGFloat kBONPointSize = 20.0;
 static NSString *const kBONEBGaramond = @"EBGaramond12-Regular";

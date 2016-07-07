@@ -6,11 +6,10 @@
 //  Copyright © 2015 Zev Eisenberg. All rights reserved.
 //
 
-@import Foundation;
+#import <Foundation/Foundation.h>
+#import <BonMot/BonMot.h>
 
-#import "BONCompatibility.h"
-
-@import CoreGraphics.CGBase;
+#import <CoreGraphics/CoreGraphics.h>
 
 OBJC_EXTERN const double kBONDoubleEpsilon;
 OBJC_EXTERN BOOL BONDoublesCloseEnough(double float1, double float2);

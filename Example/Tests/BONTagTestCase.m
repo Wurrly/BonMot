@@ -7,7 +7,7 @@
 //
 
 #import "BONBaseTestCase.h"
-@import BonMot;
+#import <BonMot/BonMot.h>
 
 @interface BONTag ()
 
@@ -18,7 +18,7 @@
 + (BONNonnull BONGeneric(NSArray, BONTag *) *)rangesInString:(NSString *BONCNonnull *BONCNonnull)string betweenTags:(BONNonnull BONGeneric(NSArray, BONTag *) *)tags;
 @end
 
-@import BonMot;
+#import <BonMot/BonMot.h>
 
 @interface BONTagTestCase : BONBaseTestCase
 

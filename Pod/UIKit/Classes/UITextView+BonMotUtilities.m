@@ -7,7 +7,8 @@
 //
 
 #import "BonMot.h"
-@import ObjectiveC.runtime;
+#import <objc/runtime.h>
+#import "UITextView+BonMotUtilities.h"
 
 @implementation UITextView (BonMotUtilities)
 

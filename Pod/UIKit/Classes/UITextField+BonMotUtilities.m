@@ -7,7 +7,8 @@
 //
 
 #import "BonMot.h"
-@import ObjectiveC.runtime;
+#import <objc/runtime.h>
+#import "UITextField+BonMotUtilities.h"
 
 @implementation UITextField (BonMotUtilities)
 

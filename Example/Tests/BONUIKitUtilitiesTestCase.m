@@ -27,7 +27,7 @@ NSMutableDictionary *BONDefaultAttributesForClassWithString(Class ViewClass, NSS
     return attributes;
 }
 
-@import BonMot;
+#import <BonMot/BonMot.h>
 
 @interface BONUIKitUtilitiesTestCase : BONBaseTestCase
 

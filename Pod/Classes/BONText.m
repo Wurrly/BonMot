@@ -11,7 +11,7 @@
 #import "BONSpecial.h"
 #import "BONTag_Private.h"
 
-@import CoreText.SFNTLayoutTypes;
+#import <CoreText/CoreText.h>
 
 static const CGFloat kBONAdobeTrackingDivisor = 1000.0;
 static const CGFloat kBONDefaultFontSize = 15.0; // per docs

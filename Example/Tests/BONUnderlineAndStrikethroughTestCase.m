@@ -8,7 +8,7 @@
 
 #import "BONBaseTestCase.h"
 
-@import BonMot;
+#import <BonMot/BonMot.h>
 
 @interface BONUnderlineAndStrikethroughTestCase : BONBaseTestCase
 
