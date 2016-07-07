@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name             = "BonMot-Wurrly"
+  s.name             = "BonMot"
   s.version          = "5.0.0"
   s.summary          = "An Objective-C attributed string generation library."
   s.description      = <<-DESC
