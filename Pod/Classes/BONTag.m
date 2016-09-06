@@ -36,7 +36,7 @@ static NSString *const kBONTagDefaultEscapeString = @"\\";
         self.textable = textable;
         self.ranges = [NSMutableArray array];
     }
-
+    
     return self;
 }
 
@@ -44,27 +44,27 @@ static NSString *const kBONTagDefaultEscapeString = @"\\";
 {
     NSString *startTag = [NSString stringWithFormat:@"%@%@%@", kBONTagDefaultStartPrefix, tag, kBONTagDefaultStartSuffix];
     NSString *endTag = [NSString stringWithFormat:@"%@%@%@", kBONTagDefaultEndPrefix, tag, kBONTagDefaultEndSuffix];
-
+    
     return [self initWithStartTag:startTag endTag:endTag escapeString:(NSString *)kBONTagDefaultEscapeString textable:textable];
 }
 
 - (id)copyWithZone:(NSZone *)zone
 {
     __typeof(self) tag = [[self.class alloc] init];
-
+    
     tag.startTag = self.startTag;
     tag.endTag = self.endTag;
     tag.escapeString = self.escapeString;
     tag.textable = self.textable;
     tag.ranges = self.ranges.mutableCopy;
-
+    
     return tag;
 }
 
 - (NSString *)description
 {
     NSString *description = [NSString stringWithFormat:@"<%@: %p, startTag: %@, endTag: %@, textable: <%@: %p>>", NSStringFromClass(self.class), self, self.startTag, self.endTag, NSStringFromClass(self.textable.class), self.textable];
-
+    
     return description;
 }
 
@@ -74,23 +74,23 @@ static NSString *const kBONTagDefaultEscapeString = @"\\";
 {
     NSParameterAssert(string);
     NSParameterAssert(tags);
-
+    
     NSMutableArray *escapedRanges = [NSMutableArray array];
-
+    
     NSString *theString = *string;
-
+    
     NSRange searchRange = NSMakeRange(0, theString.length);
-
+    
     // Iterate over the string, finding each escape in order, until there are no more escape strings
     while (YES) {
         BONTag *nextTag;
         NSRange nextEscapeRange;
         NSRange nextEscapedTagRange;
-
+        
         // Find the next escape string
         for (BONTag *tag in tags) {
             NSRange escapeRange = [theString rangeOfString:tag.escapeString options:0 range:searchRange];
-
+            
             if (escapeRange.location != NSNotFound) {
                 if (!nextTag || (escapeRange.location < nextEscapeRange.location)) {
                     // Check if this character is escaping a start or end tag
@@ -109,22 +109,22 @@ static NSString *const kBONTagDefaultEscapeString = @"\\";
                 }
             }
         }
-
+        
         if (!nextTag) {
             break;
         }
-
+        
         // Strip escape characters
         theString = [theString stringByReplacingOccurrencesOfString:nextTag.escapeString withString:@"" options:0 range:nextEscapeRange];
         NSRange range = NSMakeRange(nextEscapeRange.location, nextEscapedTagRange.length);
-
+        
         [escapedRanges addObject:[NSValue valueWithRange:range]];
-
+        
         searchRange = NSMakeRange(NSMaxRange(range), theString.length - NSMaxRange(range));
     }
-
+    
     *string = theString;
-
+    
     return escapedRanges;
 }
 
@@ -133,18 +133,18 @@ static NSString *const kBONTagDefaultEscapeString = @"\\";
     NSParameterAssert(string);
     NSParameterAssert(stringToSearch);
     NSParameterAssert(escapedRanges);
-
+    
     NSRange searchRange = range;
-
+    
     while (YES) {
         NSRange stringRange = [stringToSearch rangeOfString:string options:0 range:searchRange];
-
+        
         // Ignore this match
         if ([escapedRanges containsObject:[NSValue valueWithRange:stringRange]]) {
             searchRange = NSMakeRange(NSMaxRange(stringRange), stringToSearch.length - NSMaxRange(stringRange));
             continue;
         }
-
+        
         return stringRange;
     }
 }
@@ -153,21 +153,21 @@ static NSString *const kBONTagDefaultEscapeString = @"\\";
 {
     NSParameterAssert(string);
     NSParameterAssert(tags);
-
+    
     BONGeneric(NSArray, NSValue *)*escapedRanges = [BONTag escapedRangesInString:string withTags:tags];
-
+    
     BONGeneric(NSArray, BONTag *)*tagsWithRanges = [[NSArray alloc] initWithArray:tags copyItems:YES];
-
+    
     NSString *theString = *string;
-
+    
     NSRange searchRange = NSMakeRange(0, theString.length);
-
+    
     // Iterate over the string, finding each tag in order, until there are no more tags
     while (YES) {
         BONTag *nextTag;
         NSRange nextStartTagRange;
         NSRange nextEndTagRange;
-
+        
         // Find the next start tag
         for (BONTag *tag in tagsWithRanges) {
             NSRange startTagRange = [BONTag firstOccurrenceOfString:tag.startTag inString:theString ignoringRanges:escapedRanges inRange:searchRange];
@@ -180,30 +180,30 @@ static NSString *const kBONTagDefaultEscapeString = @"\\";
                 }
             }
         }
-
+        
         if (!nextTag) {
             break;
         }
-
+        
         NSRange range = NSMakeRange(NSMaxRange(nextStartTagRange), nextEndTagRange.location - NSMaxRange(nextStartTagRange));
-
+        
         // Strip valid tags
         range.location -= nextTag.startTag.length;
-
+        
         theString = [theString stringByReplacingOccurrencesOfString:nextTag.startTag withString:@"" options:0 range:nextStartTagRange];
         nextStartTagRange.length = 0;
-
+        
         nextEndTagRange.location -= nextTag.startTag.length;
         theString = [theString stringByReplacingOccurrencesOfString:nextTag.endTag withString:@"" options:0 range:nextEndTagRange];
         nextEndTagRange.length = 0;
-
+        
         [nextTag.ranges addObject:[NSValue valueWithRange:range]];
-
+        
         searchRange = NSMakeRange(NSMaxRange(nextEndTagRange), theString.length - NSMaxRange(nextEndTagRange));
     }
-
+    
     *string = theString;
-
+    
     return tagsWithRanges;
 }
 
@@ -212,10 +212,10 @@ static NSString *const kBONTagDefaultEscapeString = @"\\";
 - (BOOL)isEqualToTag:(BONTag *)tag
 {
     return [tag.startTag isEqualToString:self.startTag] &&
-           [tag.endTag isEqualToString:self.endTag] &&
-           [tag.textable isEqual:self.textable] &&
-           [tag.escapeString isEqualToString:self.escapeString] &&
-           [tag.ranges isEqualToArray:self.ranges];
+    [tag.endTag isEqualToString:self.endTag] &&
+    [tag.textable isEqual:self.textable] &&
+    [tag.escapeString isEqualToString:self.escapeString] &&
+    [tag.ranges isEqualToArray:self.ranges];
 }
 
 - (BOOL)isEqual:(id)object
@@ -223,11 +223,11 @@ static NSString *const kBONTagDefaultEscapeString = @"\\";
     if (self == object) {
         return YES;
     }
-
+    
     if (![object isKindOfClass:[BONTag class]]) {
         return NO;
     }
-
+    
     return [self isEqualToTag:(BONTag *)object];
 }
 

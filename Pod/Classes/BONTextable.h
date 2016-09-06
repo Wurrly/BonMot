@@ -11,7 +11,6 @@
 #import <Foundation/Foundation.h>
 
 
-
 #import "BONCompatibility.h"
 
 @class BONText;

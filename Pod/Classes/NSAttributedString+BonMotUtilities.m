@@ -25,9 +25,9 @@ NSString *BONDoubleRoundedString(double theDouble)
     if (fabs(theDouble - floor(theDouble)) < BONEpsilon()) {
         integral = YES;
     }
-
+    
     BOOL multipleOfOneHalf = fabs(fmod(theDouble, 0.5)) < BONEpsilon();
-
+    
     int numberOfDigits;
     if (integral) {
         numberOfDigits = 0;
@@ -38,7 +38,7 @@ NSString *BONDoubleRoundedString(double theDouble)
     else {
         numberOfDigits = kBONMaxRoundingDigits;
     }
-
+    
     NSString *string = [NSString stringWithFormat:@"%.*lf", numberOfDigits, theDouble];
     return string;
 }
@@ -60,19 +60,19 @@ NSString *BONPrettyStringFromCGSize(CGSize size)
 {
     NSString *originalString = self.string;
     NSMutableString *composedHumanReadableString = [NSMutableString string];
-
+    
     [originalString enumerateSubstringsInRange:NSMakeRange(0, originalString.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString *BONCNullable substring, NSRange substringRange, NSRange enclosingRange, BOOL *BONCNonnull stop) {
-
+        
         unichar character = [substring characterAtIndex:0];
         NSString *specialCharacterSubstitutionString = [BONSpecial humanReadableStringDictionary][@(character)];
-
+        
         NSMutableString *mutableUnicodeName = substring.mutableCopy;
         CFStringTransform((CFMutableStringRef)mutableUnicodeName, NULL, kCFStringTransformToUnicodeName, FALSE);
-
+        
         BONStringDict *attributes = [self attributesAtIndex:substringRange.location effectiveRange:NULL];
         NSTextAttachment *attachment = attributes[NSAttachmentAttributeName];
         UIImage *attachedImage = attachment.image;
-
+        
         // Substitute attached images with @"{image<height>x<width>}"
         if (attachedImage) {
             NSString *sizeString = includeImageSize ? BONPrettyStringFromCGSize(attachedImage.size) : @"";
@@ -86,7 +86,7 @@ NSString *BONPrettyStringFromCGSize(CGSize size)
         // Substitute 򡌸 or similar with {unassignedUnicode<unicodeNumber>}
         else if ([mutableUnicodeName hasPrefix:kUnassignedCharacterNamePrefix] && [mutableUnicodeName hasSuffix:kUnassignedCharacterNameSuffix]) {
             NSString *unicodeNumber = [mutableUnicodeName substringWithRange:NSMakeRange(kUnassignedCharacterNamePrefix.length, mutableUnicodeName.length - kUnassignedCharacterNamePrefix.length - kUnassignedCharacterNameSuffix.length)];
-
+            
             NSString *unassignedCharacterString = [NSString stringWithFormat:@"{unassignedUnicode%@}", unicodeNumber];
             [composedHumanReadableString appendString:unassignedCharacterString];
         }
@@ -94,7 +94,7 @@ NSString *BONPrettyStringFromCGSize(CGSize size)
             [composedHumanReadableString appendString:substring];
         }
     }];
-
+    
     return composedHumanReadableString;
 }
 

@@ -27,7 +27,7 @@
     if (self) {
         _text = [[BONText alloc] init];
     }
-
+    
     return self;
 }
 
@@ -64,7 +64,7 @@
         newChain.text.font = font;
         return newChain;
     };
-
+    
     return [fontNameAndSizeBlock copy];
 }
 
@@ -75,7 +75,7 @@
         newChain.text.font = font;
         return newChain;
     };
-
+    
     return [fontBlock copy];
 }
 
@@ -86,7 +86,7 @@
         newChain.text.color = color;
         return newChain;
     };
-
+    
     return [colorBlock copy];
 }
 
@@ -97,8 +97,19 @@
         newChain.text.backgroundColor = color;
         return newChain;
     };
-
+    
     return [colorBlock copy];
+}
+
+- (BONChainURL)url
+{
+    BONChainURL urlBlock = ^(NSURL *url) {
+        __typeof(self) newChain = self.copyWithoutNextText;
+        newChain.text.url = url;
+        return newChain;
+    };
+    
+    return [urlBlock copy];
 }
 
 - (BONChainAdobeTracking)adobeTracking
@@ -108,7 +119,7 @@
         newChain.text.adobeTracking = adobeTracking;
         return newChain;
     };
-
+    
     return [adobeTrackingBlock copy];
 }
 
@@ -119,7 +130,7 @@
         newChain.text.pointTracking = pointTracking;
         return newChain;
     };
-
+    
     return [pointTrackingBlock copy];
 }
 
@@ -130,7 +141,7 @@
         newChain.text.firstLineHeadIndent = firstLineHeadIndent;
         return newChain;
     };
-
+    
     return [firstLineHeadIndentBlock copy];
 }
 
@@ -141,7 +152,7 @@
         newChain.text.headIndent = headIndent;
         return newChain;
     };
-
+    
     return [headIndentBlock copy];
 }
 
@@ -152,7 +163,7 @@
         newChain.text.tailIndent = tailIndent;
         return newChain;
     };
-
+    
     return [tailIndentBlock copy];
 }
 
@@ -163,7 +174,7 @@
         newChain.text.lineHeightMultiple = lineHeightMultiple;
         return newChain;
     };
-
+    
     return [lineHeightMultipleBlock copy];
 }
 
@@ -174,7 +185,7 @@
         newChain.text.maximumLineHeight = maximumLineHeight;
         return newChain;
     };
-
+    
     return [maximumLineHeightBlock copy];
 }
 
@@ -185,7 +196,7 @@
         newChain.text.minimumLineHeight = minimumLineHeight;
         return newChain;
     };
-
+    
     return [minimumLineHeightBlock copy];
 }
 
@@ -196,7 +207,7 @@
         newChain.text.lineSpacing = lineSpacing;
         return newChain;
     };
-
+    
     return [lineSpacingBlock copy];
 }
 
@@ -207,7 +218,7 @@
         newChain.text.lineBreakMode = lineBreakMode;
         return newChain;
     };
-
+    
     return [lineBreakModeBlock copy];
 }
 
@@ -218,7 +229,7 @@
         newChain.text.paragraphSpacingAfter = paragraphSpacingAfter;
         return newChain;
     };
-
+    
     return [paragraphSpacingAfterBlock copy];
 }
 
@@ -229,7 +240,7 @@
         newChain.text.paragraphSpacingBefore = paragraphSpacingBefore;
         return newChain;
     };
-
+    
     return [paragraphSpacingBeforeBlock copy];
 }
 
@@ -240,7 +251,7 @@
         newChain.text.baselineOffset = baselineOffset;
         return newChain;
     };
-
+    
     return [baselineOffsetBlock copy];
 }
 
@@ -251,7 +262,7 @@
         newChain.text.hyphenationFactor = hyphenationFactor;
         return newChain;
     };
-
+    
     return [hyphenationFactorBlock copy];
 }
 
@@ -262,7 +273,7 @@
         newChain.text.alignment = alignment;
         return newChain;
     };
-
+    
     return [alignmentBlock copy];
 }
 
@@ -273,7 +284,7 @@
         newChain.text.figureCase = figureCase;
         return newChain;
     };
-
+    
     return [figureCaseBlock copy];
 }
 
@@ -284,7 +295,7 @@
         newChain.text.figureSpacing = figureSpacing;
         return newChain;
     };
-
+    
     return [figureSpacingBlock copy];
 }
 
@@ -295,7 +306,7 @@
         newChain.text.string = string;
         return newChain;
     };
-
+    
     return [stringBlock copy];
 }
 
@@ -306,7 +317,7 @@
         newChain.text.image = image;
         return newChain;
     };
-
+    
     return [imageBlock copy];
 }
 
@@ -317,7 +328,7 @@
         newChain.text.indentSpacer = indentSpacer;
         return newChain;
     };
-
+    
     return [indentSpacerBlock copy];
 }
 
@@ -328,7 +339,7 @@
         newChain.text.underlineStyle = style;
         return newChain;
     };
-
+    
     return [underlineStyleBlock copy];
 }
 
@@ -339,7 +350,7 @@
         newChain.text.underlineColor = color;
         return newChain;
     };
-
+    
     return [underlineColorBlock copy];
 }
 
@@ -350,7 +361,7 @@
         newChain.text.strikethroughStyle = style;
         return newChain;
     };
-
+    
     return [strikethroughStyleBlock copy];
 }
 
@@ -361,7 +372,7 @@
         newChain.text.strikethroughColor = color;
         return newChain;
     };
-
+    
     return [strikethroughColorBlock copy];
 }
 
@@ -372,7 +383,7 @@
         newChain.text.tagStyles = BONTagsFromDictionary(tagStyles);
         return newChain;
     };
-
+    
     return [tagStylesBlock copy];
 }
 
@@ -383,37 +394,37 @@
         newChain.text.tagStyles = tagStyles;
         return newChain;
     };
-
+    
     return [tagStylesBlock copy];
 }
 
 - (void)appendLink:(id<BONTextable>)link
 {
-    [self appendLink:link separator:nil];
+    [self appendLink:link separatorTextable:nil];
 }
 
-- (void)appendLink:(id<BONTextable>)link separator:(NSString *)separator
+- (void)appendLink:(id<BONTextable>)link separatorTextable:(id<BONTextable>)separator
 {
-    if (separator.length > 0) {
+    if (separator && !separator.text.generatesEmptyString) {
         // Recursion!
-        [self appendLink:self.string(separator)]; // add the sparator, with the same properties as self, to the end of the chain.
+        [self appendLink:separator]; // add the sparator, with the same properties as self, to the end of the chain.
     }
-
+    
     [self.class appendText:link.text toEndOfText:self.text];
 }
 
 - (NSString *)description
 {
-    NSString *debugString = [self.text debugStringIncludeImageAddresses:YES];
+    NSString *debugString = [self.text debugStringLeftToRight];
     NSString *realString = self.attributedString.string;
     __block NSUInteger composedCharacterCount = 0;
-
+    
     [realString enumerateSubstringsInRange:NSMakeRange(0, realString.length)
                                    options:NSStringEnumerationByComposedCharacterSequences
                                 usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
                                     composedCharacterCount++;
                                 }];
-
+    
     NSString *characterSuffix = (composedCharacterCount == 1) ? @"" : @"s"; // pluralization
     NSString *description = [NSString stringWithFormat:@"<%@: %p with %@: %p, %@ composed character%@:\n%@\n// end of %@: %p description>", NSStringFromClass(self.class), self, NSStringFromClass([BONText class]), self.text, @(composedCharacterCount), characterSuffix, debugString, NSStringFromClass(self.class), self];
     return description;
@@ -439,6 +450,11 @@
 - (BONChainColor)textColor
 {
     return self.color;
+}
+
+- (void)appendLink:(id<BONTextable>)link separator:(NSString *)separator
+{
+    [self appendLink:link separatorTextable:self.string(separator)];
 }
 
 @end

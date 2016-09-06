@@ -32,6 +32,7 @@
 + (NSString *)horizontalEllipsis { return @"\u2026"; }
 + (NSString *)lineSeparator { return @"\u2028"; }
 + (NSString *)paragraphSeparator { return @"\u2029"; }
++ (NSString *)leftToRightOverride { return @"\u202D"; }
 + (NSString *)narrowNoBreakSpace { return @"\u202F"; }
 + (NSString *)wordJoiner { return @"\u2060"; }
 + (NSString *)minusSign { return @"\u2212"; }
@@ -40,31 +41,32 @@
 + (BONGeneric(NSDictionary, NSNumber *, NSString *) *)humanReadableStringDictionary
 {
     return @{
-        @(BONCharacterTab) : @"{tab}", 
-        @(BONCharacterLineFeed) : @"{lineFeed}", 
-        @(BONCharacterVerticalTab) : @"{verticalTab}", 
-        @(BONCharacterFormFeed) : @"{formFeed}", 
-        @(BONCharacterCarriageReturn) : @"{carriageReturn}", 
-        @(BONCharacterNextLine) : @"{nextLine}", 
-        @(BONCharacterNoBreakSpace) : @"{noBreakSpace}", 
-        @(BONCharacterEnSpace) : @"{enSpace}", 
-        @(BONCharacterEmSpace) : @"{emSpace}", 
-        @(BONCharacterFigureSpace) : @"{figureSpace}", 
-        @(BONCharacterThinSpace) : @"{thinSpace}", 
-        @(BONCharacterHairSpace) : @"{hairSpace}", 
-        @(BONCharacterZeroWidthSpace) : @"{zeroWidthSpace}", 
-        @(BONCharacterNonBreakingHyphen) : @"{nonBreakingHyphen}", 
-        @(BONCharacterFigureDash) : @"{figureDash}", 
-        @(BONCharacterEnDash) : @"{enDash}", 
-        @(BONCharacterEmDash) : @"{emDash}", 
-        @(BONCharacterHorizontalEllipsis) : @"{horizontalEllipsis}", 
-        @(BONCharacterLineSeparator) : @"{lineSeparator}", 
-        @(BONCharacterParagraphSeparator) : @"{paragraphSeparator}", 
-        @(BONCharacterNarrowNoBreakSpace) : @"{narrowNoBreakSpace}", 
-        @(BONCharacterWordJoiner) : @"{wordJoiner}", 
-        @(BONCharacterMinusSign) : @"{minusSign}", 
-        @(BONCharacterObjectReplacementCharacter) : @"{objectReplacementCharacter}", 
-    };
+             @(BONCharacterTab) : @"{tab}",
+             @(BONCharacterLineFeed) : @"{lineFeed}",
+             @(BONCharacterVerticalTab) : @"{verticalTab}",
+             @(BONCharacterFormFeed) : @"{formFeed}",
+             @(BONCharacterCarriageReturn) : @"{carriageReturn}",
+             @(BONCharacterNextLine) : @"{nextLine}",
+             @(BONCharacterNoBreakSpace) : @"{noBreakSpace}",
+             @(BONCharacterEnSpace) : @"{enSpace}",
+             @(BONCharacterEmSpace) : @"{emSpace}",
+             @(BONCharacterFigureSpace) : @"{figureSpace}",
+             @(BONCharacterThinSpace) : @"{thinSpace}",
+             @(BONCharacterHairSpace) : @"{hairSpace}",
+             @(BONCharacterZeroWidthSpace) : @"{zeroWidthSpace}",
+             @(BONCharacterNonBreakingHyphen) : @"{nonBreakingHyphen}",
+             @(BONCharacterFigureDash) : @"{figureDash}",
+             @(BONCharacterEnDash) : @"{enDash}",
+             @(BONCharacterEmDash) : @"{emDash}",
+             @(BONCharacterHorizontalEllipsis) : @"{horizontalEllipsis}",
+             @(BONCharacterLineSeparator) : @"{lineSeparator}",
+             @(BONCharacterParagraphSeparator) : @"{paragraphSeparator}",
+             @(BONCharacterLeftToRightOverride) : @"{leftToRightOverride}",
+             @(BONCharacterNarrowNoBreakSpace) : @"{narrowNoBreakSpace}",
+             @(BONCharacterWordJoiner) : @"{wordJoiner}",
+             @(BONCharacterMinusSign) : @"{minusSign}",
+             @(BONCharacterObjectReplacementCharacter) : @"{objectReplacementCharacter}", 
+             };
 }
 
 @end
